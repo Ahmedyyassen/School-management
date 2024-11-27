@@ -1,1 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    font-family: "Cairo", sans-serif;
+    font-optical-sizing: auto;
+    user-select:none;
+    -webkit-user-select: none;
+}
+
+
+html{
+    scroll-behavior: smooth;
+}
+.dark-theme{
+    --main-color:#703bf7;
+    --dark-color:#ffffff;
+    --para-color:#666666;
+    --dark-red:#d01418;
+    --border-color:#262626;
+    --name-color:#ffffff;
+    --bg-color : #111111;
+    --bG-color : #111111;
+}
+:root{
+    --main-color:gold;
+    --dark-color:#000000;
+    --para-color:#666666;
+    --dark-red:#d01418;
+    --border-color:#6666662a;
+    --name-color:#0066c0;
+    --bg-color : #ffffff;
+    --bG-color : #f4f6f9;
+}
+
+
+body{
+    background-color: var(--bG-color);
+}
+h1,h2,h3,h4,h5,h6{
+    color: var(--dark-color);
+}
+.container{
+    width: 80%;
+    margin: auto;
+}
+
+@media (max-width: 1550px) {
+    .container{
+        width: 90%;
+    }
+
+}
+
+

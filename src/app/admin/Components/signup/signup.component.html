@@ -1,0 +1,19 @@
+
+<div class="body">
+  <div class="login">
+
+      <form [formGroup]="form">
+          <div class="head">Wellcome back</div>
+          <input type="text" placeholder="Name" formControlName="name">
+          <input type="email" placeholder="Email" formControlName="email">
+          <input type="password" placeholder="Password" formControlName="password">
+          <input type="password" placeholder="Confirm password" formControlName="confirmPassword">
+
+          <button type="submit" class="login-in" (click)="signUp()">Sign Up</button>
+          <div class="pp">I already have an account<a (click)="login()">Login in</a></div>
+          <a href="" class="btn0 btn1"><i class="fa-brands fa-apple"></i>Log in with Apple</a>
+          <a href="" class="btn btn1"><i class="fa-brands fa-google"></i>Log in with Google</a>
+
+      </form>
+  </div>
+ </div>
