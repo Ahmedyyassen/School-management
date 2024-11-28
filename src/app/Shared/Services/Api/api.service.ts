@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'https://mr-codeboy-default-rtdb.firebaseio.com/Customers.json';
+  private apiUrl = 'https://topico-stpre-default-rtdb.firebaseio.com/';
 
   private http = inject(HttpClient);
 
-  public getApi<T>() : Observable<T> {
-    return this.http.get<T>(this.apiUrl)
+  public getApi<T>(path : string) : Observable<T> {
+    return this.http.get<T>(`${this.apiUrl}${path}`)
   }
   public postApi(url : string, body : any, headers : any) : Observable<ArrayBuffer>{
     return this.http.post(url, body, headers);

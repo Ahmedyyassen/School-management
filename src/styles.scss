@@ -27,6 +27,8 @@ html{
     --name-color:#ffffff;
     --bg-color : #111111;
     --bG-color : #111111;
+    // ******************
+
 }
 :root{
     --main-color:gold;
@@ -37,8 +39,9 @@ html{
     --name-color:#0066c0;
     --bg-color : #ffffff;
     --bG-color : #f4f6f9;
+    // ***********************
+    --hover-color: #eef9fd;
 }
-
 
 body{
     background-color: var(--bG-color);

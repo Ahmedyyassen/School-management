@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../Shared/Services/Auth/auth.service';
-import { RequestService } from '../../Services/Api/request.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,11 +15,6 @@ import { Router } from '@angular/router';
 
 export class LoginComponent {
 
-  go(){
-    const token = JSON.parse(localStorage.getItem('user')!);
-    console.log(token.idToken);
-  }
-
   form!: FormGroup;
   constructor(private formBuilder : FormBuilder,
              private auth : AuthService,
@@ -32,9 +25,6 @@ export class LoginComponent {
     this.createForm();
   }
 
-  showSuccess() {
-    this.toastr.success('مرحبا يا احمد', 'تم تسجيل الدخول بنجاح');
-  }
 
   private createForm(): void {
     this.form = this.formBuilder.group({
@@ -51,8 +41,8 @@ export class LoginComponent {
         console.log("login successfully");
         localStorage.setItem('user', JSON.stringify(data));
         this.router.navigate(['/core']);
-        this.showSuccess();
-      }, err => {
+        this.toastr.success('مرحبا يا احمد', 'تم تسجيل الدخول بنجاح');
+        }, err => {
         this.toastr.error('برجاء التأكد من البيانات المدخلة', 'خطأ في التسجيل');
       })
     }else{
@@ -63,4 +53,6 @@ export class LoginComponent {
   signUp():void{
     this.router.navigate(['/singup'])
   }
+
+
 }

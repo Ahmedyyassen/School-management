@@ -13,7 +13,7 @@ export class RequestService {
 
 
   public getRequest(): Observable<any> {
-    return this.api.getApi<any>()
+    return this.api.getApi<any>("products.json");
     // .pipe(map(
     //   data => data = Object.values(data)
     // ));
