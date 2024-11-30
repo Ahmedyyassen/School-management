@@ -114,4 +114,13 @@
     //   }
     // }
   }
+
+}
+.name{
+  transition: 0.3s;
+  cursor: pointer;
+  font-size: 0.9rem;
+  &:hover{
+    text-decoration: underline;
+  }
 }

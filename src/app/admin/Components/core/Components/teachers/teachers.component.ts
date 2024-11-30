@@ -98,15 +98,7 @@ ngOnInit(): void {
   }
   // *************** delete student ********************
   public deleteStudent(StudentID : number):void{
-    const temp = this.dataSource.filteredData.find(p => p.StudentID === StudentID);
-    const id = this.dataSource.filteredData.indexOf(temp!)
-    console.log(id);
-    this.request.deleteRequest(id).subscribe(()=>{
-      console.log("deleteStudent successfully");
 
-    },err=>{
-      console.log(err.error);
-    })
   }
 
 // ****************** Hoooks *****************************

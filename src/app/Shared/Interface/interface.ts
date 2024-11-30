@@ -4,6 +4,8 @@ export interface Login{
   returnSecureToken	: boolean;
 }
 export interface student {
+  id:number;
+  scrambledId:string;
   StudentID: number
   ParentID: number
   address: string
@@ -18,15 +20,6 @@ export interface student {
   expensesStutus: string
 }
 
-// export interface student{
-//   StudentID	:string;
-//   FirstName : string;
-//   LastName : string;
-//   DateOfBirth : string;
-//   Gender : string;
-//   Class : string;
-//   expenses : string;
-// }
 
 export interface Salaries {
   EmployeeID: string;

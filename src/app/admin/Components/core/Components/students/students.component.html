@@ -31,8 +31,9 @@
           </ng-container>
 
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> الاسم </th>
-            <td mat-cell *matCellDef="let element"> {{element.FirstName+" "+ element.LastName}} </td>
+            <th mat-header-cell *matHeaderCellDef > الاسم </th>
+            <td  mat-cell *matCellDef="let element" (click)="showMoreDetailes(element)" class="text-primary name"> {{element.FirstName+" "+ element.LastName}} </td>
+
           </ng-container>
 
           <ng-container matColumnDef="StudentID">
@@ -53,10 +54,13 @@
           <ng-container matColumnDef="expenses">
             <th mat-header-cell *matHeaderCellDef> الرسوم </th>
             <td mat-cell *matCellDef="let element">
-              @if (element.expensesStutus == "payed") {
-                <span class="badge text-bg-success rounded-pill">تم السداد</span>
-              }@else {
-                <span class="badge text-bg-danger rounded-pill">لم يتم السداد</span>
+              @switch (element.expensesStutus) {
+                @case ("payed") {
+                  <span class="badge text-bg-success rounded-pill">تم السداد</span>
+                }
+                @default {
+                  <span class="badge text-bg-danger rounded-pill">لم يتم السداد</span>
+                }
               }
 
 
@@ -68,9 +72,13 @@
             <td mat-cell *matCellDef="let element">
 
               <div class="btns">
-                <button class="btnn  text-bg-dark"><i class="fa-solid fa-info"></i></button>
-                <button  mat-raised-button class="edit btnn bg-warning"><i class="fa-regular fa-pen-to-square text-light"></i></button>
-                <button class="delete btnn" (click)="deleteStudent(element.StudentID)"><i class="fa-solid fa-trash-can"></i></button>
+                <button mat-icon-button color="primary" [matMenuTriggerFor]="menu" ><i class="fa-solid fa-ellipsis"></i></button>
+
+                <mat-menu #menu="matMenu">
+                  <!-- <button mat-menu-item >تفاصيل</button> -->
+                  <button mat-menu-item (click)="editForm(element)" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">تعديل </button>
+                  <button  mat-menu-item (click)="deleteStudent(element.scrambledId)" class="text-danger">حذف</button>
+                </mat-menu>
             </div>
 
 
@@ -212,7 +220,11 @@
 
 
         <div class="modal-footer">
-          <button class="btn btn-primary" (click)="addStudent()">اضافة</button>
+          @if (btnFlag) {
+            <button class="btn btn-primary  btn-lg rounded-pill" (click)="addStudent()">اضافة</button>
+          }@else{
+            <button class="btn btn-primary btn-lg rounded-pill" (click)="editStudent()">تحديث</button>
+          }
         </div>
 
       </form>

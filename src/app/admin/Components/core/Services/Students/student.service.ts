@@ -12,19 +12,46 @@ export class StudentService {
   private api = inject(ApiService);
 
 
-  public getRequest(): Observable<any> {
-    return this.api.getApi<any>("FinalStudents.json")
+  public getRequest(): Observable <Array<student>> {
+    return this.api.getApi<Array<student>>("FinalStudents.json")
     .pipe(map(
-      data => data = Object.values(data)
+      (data) => {
+        return Object.entries(data).map( ([key, value]) => {
+            return{
+              id: value.id,
+              scrambledId: key,
+              StudentID: value.StudentID,
+              ParentID: value.ParentID,
+              address: value.address,
+              Phone: value.Phone,
+              Nationality: value.Nationality,
+              FirstName: value.FirstName,
+              LastName: value.LastName,
+              DateOfBirth: value.DateOfBirth,
+              more: value.more,
+              Gender: value.Gender,
+              Class: value.Class,
+              expensesStutus: value.expensesStutus,
+              }
+          })
+      }
     ));
+  }
+
+  public getById(id: string): Observable<student>{
+    return this.api.getApi<student>(`FinalStudents/${id}.json`);
   }
 
   public postRequest(body : student): Observable<any> {
     return this.api.postApi(`${apiUrl}FinalStudents.json`, body , {'Content-Type': 'application/json'});
   }
 
-    public deleteRequest(id : number): Observable<void> {
-    return this.api.deleteApi<void>("Students.json",id);
+  public patchRequest(body : student): Observable<any> {
+    return this.api.patchingApi(`${apiUrl}FinalStudents/${body.scrambledId}.json`, body , {'Content-Type': 'application/json'});
+  }
+
+    public deleteRequest(id : string): Observable<void> {
+    return this.api.deleteApi<void>(`${apiUrl}FinalStudents/${id}.json`);
   }
 
 }

@@ -17,8 +17,12 @@ export class ApiService {
   public postApi(url : string, body : any, headers : any) : Observable<ArrayBuffer>{
     return this.http.post(url, body, headers);
   }
-  
-  public deleteApi<T>(path: string,id : number): Observable <T> {
-    return this.http.delete<T>(`${apiKey}${path}/${id}`)
+
+  public patchingApi(url : string, body : any, headers : any) : Observable<ArrayBuffer>{
+    return this.http.patch(url, body, headers);
+  }
+
+  public deleteApi<T>(url :string): Observable <T> {
+    return this.http.delete<T>(url)
   }
 }
