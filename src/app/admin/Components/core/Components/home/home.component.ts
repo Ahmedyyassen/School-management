@@ -1,23 +1,15 @@
 import { Component } from '@angular/core';
-import { RequestService } from '../../../../Services/Api/request.service';
-
+// ***************************************
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
+// ***************************************
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
-
-constructor(private request : RequestService){
-  // this.getRequest();
-}
-
-// getRequest():void{
-//   this.request.getRequest().subscribe(data=>{
-//     console.log(data);
-
-//   })
-// }
 
 }

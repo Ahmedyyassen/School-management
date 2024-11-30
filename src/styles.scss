@@ -2,6 +2,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap');
 
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+
 *{
     padding: 0;
     margin: 0;
@@ -13,6 +16,8 @@
     user-select:none;
     -webkit-user-select: none;
 }
+
+
 
 
 html{
@@ -40,11 +45,11 @@ html{
     --bg-color : #ffffff;
     --bG-color : #f4f6f9;
     // ***********************
-    --hover-color: #eef9fd;
+    --hover-color: #94cce0;
 }
 
 body{
-    background-color: var(--bG-color);
+    background-color: var(--bG-color) !important;
 }
 h1,h2,h3,h4,h5,h6{
     color: var(--dark-color);
@@ -62,3 +67,6 @@ h1,h2,h3,h4,h5,h6{
 }
 
 
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

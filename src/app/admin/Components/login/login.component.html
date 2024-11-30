@@ -1,17 +1,55 @@
 <div class="body">
   <div class="login">
+    <form [formGroup]="form">
+      <div class="head">ادارة المدرسة</div>
+      <!--! ********************** email *************************** -->
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>اسم المستخدم</mat-label>
+        <input
+          type="email"
+          matInput
+          [formControl]="emailFormControl"
+          [errorStateMatcher]="matcher"
+          placeholder="Ex. pat@example.com"
+        />
+        @if (emailFormControl.hasError('email') &&
+        !emailFormControl.hasError('required')) {
+        <mat-error>من فضلك ادخل ايميل صالح</mat-error>
+        } @if (emailFormControl.hasError('required')) {
+        <mat-error>هذا الحقل<strong> ضروري</strong></mat-error>
+        }
+      </mat-form-field>
 
-      <form  [formGroup]="form">
-          <div class="head">ادارة المدرسة</div>
-          <input type="email" placeholder="اسم المستخدم" formControlName="email">
-          <input type="password" placeholder="كلمة المرور" formControlName="password">
-          <a href="" class="forget">نسيت كلمة المرور ؟</a>
-          <button class="login-in" type="button" (click)="login()">تسجيل الدخول</button>
-          <div class="pp">ليس لدي حساب ؟<a (click)="signUp()">انشاء حساب </a></div>
-          <a href="" class="btn0 btn1"><i class="fa-brands fa-apple"></i>Log in with Apple</a>
-          <a href="" class="btn btn1"><i class="fa-brands fa-google"></i>Log in with Google</a>
-      </form>
+      <!--! ********************** password *************************** -->
+
+      <mat-form-field appearance="outline">
+        <mat-label>كلمة المرور</mat-label>
+        <input
+          matInput
+          [type]="hide() ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="clickEvent($event)"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide()"
+        >
+          <mat-icon>{{ hide() ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <!--! ************************************************************* -->
+      <a href="" class="forget">نسيت كلمة المرور ؟</a>
+      <button class="login-in" type="button" (click)="login()">
+        تسجيل الدخول
+      </button>
+      <div class="pp">ليس لدي حساب ؟<a (click)="signUp()">انشاء حساب </a></div>
+      <a href="" class="btn0 btn1"
+        ><i class="fa-brands fa-apple"></i>Log in with Apple</a>
+      <a href="" class="btn btn1"
+        ><i class="fa-brands fa-google"></i>Log in with Google</a
+      >
+    </form>
   </div>
- </div>
-
-
+</div>

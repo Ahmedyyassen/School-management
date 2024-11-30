@@ -1,0 +1,117 @@
+.main{
+  -color: green;
+  width: calc(100% - 320px);
+  margin-right: 320px;
+  .header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20px 10px;
+    background-color: var(--bg-color);
+    border-radius: 0px 0 18px 0px;
+    .right{
+      font-size: 1.5rem;
+
+    }
+    .left{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      .search{
+        width: 300px;
+        height: 40px;
+        border: 2px solid var(--border-color);
+        border-radius: 1.2rem;
+        overflow: hidden;
+        position: relative;
+        input{
+          border: none;
+          outline: none;
+          width: 100%;
+          height: 100%;
+          padding-right: 38px;
+          font-size: 0.9rem;
+          color: var(--dark-color);
+          &::placeholder{
+            font-size: 1rem;
+          }
+        }
+        i{
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 1.3rem;
+          color: var(--name-color);
+        }
+      }
+      button{
+        border: none;
+        outline: none;
+        background-color:var(--name-color);
+        width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          overflow: hidden;
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover{
+            background-color: #0873d1cc;
+          }
+          i{
+          line-height: 35px;
+          font-size: 1.1rem;
+          color: var(--bg-color);
+        }
+      }
+    }
+  }
+
+  // ************ table ****************
+
+  .table{
+    margin-top: 20px;
+    table {
+      border-radius: 1rem;
+      overflow: hidden;
+      width: 100%;
+      background-color: var(--bg-color);
+    }
+  }
+}
+
+.btns{
+  .btnn{
+    margin: 0 7px;
+    outline: none;
+    border: none;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+    i{
+      line-height: 30px;
+    }
+    &.delete{
+      background-color: red;
+      &:hover{
+        background-color: darkred;
+      }
+      i{
+        color: white;
+      }
+    }
+    // &.edit{
+    //   background-color: #9794e4;
+    //   &:hover{
+    //     background-color: #1812b7a3;
+    //   }
+    //   i{
+    //     color: white;
+    //   }
+    // }
+  }
+}

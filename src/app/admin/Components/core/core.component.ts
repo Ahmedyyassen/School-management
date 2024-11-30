@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild  } from '@angular/core';
+
 
 @Component({
   selector: 'app-core',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   templateUrl: './core.component.html',
   styleUrl: './core.component.scss'
 })
+
 export class CoreComponent {
 
+  
 }

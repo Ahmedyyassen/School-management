@@ -1,2 +1,54 @@
+<div class="main">
+  <div class="header">
+    <div class="img">
+      <img src="https://img.freepik.com/free-vector/gradient-high-school-logo-design_23-2149626932.jpg" alt="" />
+    </div>
+    <div class="title">mr codeboy</div>
+  </div>
+
+  <div class="sidebar">
+    <ul>
+      <li [routerLink]="['/core/home']" routerLinkActive="active" ><a> <i class="fa fa-home"></i> الرئيسية </a></li>
+      <li [routerLink]="['/core/teachers']" routerLinkActive="active" ><a><i class="fa fa-user-circle"></i>المدرسين</a></li>
+      <li [routerLink]="['/core/students']" routerLinkActive="active" ><a><i class="fa fa-book"></i>الطلاب</a></li>
+      <li [routerLink]="['/core/employee']" routerLinkActive="active" ><a><i class="fa fa-users"></i>العمال</a></li>
+      <li [routerLink]="['/core/expenses']" routerLinkActive="active" ><a><i class="fa fa-users"></i>المصروفات</a></li>
+      <li [routerLink]="['/core/salaries']" routerLinkActive="active" ><a><i class="fa fa-calendar"></i>المدفوعات</a></li>
+      <li [routerLink]="" routerLinkActive="activer">
+        <a >
+          <i class="fa fa-users"></i>
+          العمال
+        </a>
+      </li>
+      <li>
+        <a >
+          <i class="fa fa-users"></i>
+          المصروفات
+        </a>
+      </li>
+      <li>
+        <a >
+          <i class="fa fa-calendar"></i>
+          المدفوعات
+        </a>
+      </li>
+      <li>
+        <a >
+          <i class="fa fa-users"></i>
+          العمال
+        </a>
+      </li>
+      <li>
+        <a >
+          <i class="fa fa-users"></i>
+          المصروفات
+        </a>
+      </li>
+
+
+
+    </ul>
+  </div>
+</div>
+
 <router-outlet></router-outlet>
-<p>core works!</p>

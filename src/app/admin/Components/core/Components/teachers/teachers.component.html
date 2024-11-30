@@ -1,1 +1,234 @@
-<p>teachers works!</p>
+<div class="main">
+
+  <!--! ************************* Header **************************************** -->
+
+<div class="header">
+  <div class="right">All Students</div>
+  <div class="left">
+    <div class="search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="بحث..." [(ngModel)]="sreach" (keyup)="search()">
+    </div>
+    <button><i class="fa-solid fa-plus" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"></i></button>
+    <button><i class="fa-solid fa-arrow-down-wide-short"></i></button>
+    <button><i class="fa-solid fa-sliders"></i></button>
+
+  </div>
+</div>
+
+
+<!--! ************************* Table **************************************** -->
+@if (true) {
+
+  <div class="table">
+    <h1>legnth => {{dataSource.data.length}}  </h1>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{ dataSource.data.indexOf(element)+1   }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> الاسم </th>
+            <td mat-cell *matCellDef="let element"> {{element.FirstName+" "+ element.LastName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="StudentID">
+            <th mat-header-cell *matHeaderCellDef> رقم الطالب </th>
+            <td mat-cell *matCellDef="let element"> {{element.StudentID}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Gender">
+            <th mat-header-cell *matHeaderCellDef> الجنس </th>
+            <td mat-cell *matCellDef="let element"> {{element.Gender}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="Class">
+            <th mat-header-cell *matHeaderCellDef> الفصل </th>
+            <td mat-cell *matCellDef="let element"> {{element.Class}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="expenses">
+            <th mat-header-cell *matHeaderCellDef> الرسوم </th>
+            <td mat-cell *matCellDef="let element">
+              @if (element.expensesStutus == "payed") {
+                <span class="badge text-bg-success rounded-pill">تم السداد</span>
+              }@else {
+                <span class="badge text-bg-danger rounded-pill">لم يتم السداد</span>
+              }
+
+
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="options">
+            <th mat-header-cell *matHeaderCellDef>  </th>
+            <td mat-cell *matCellDef="let element">
+
+              <div class="btns">
+                <button mat-icon-button color="primary" [matMenuTriggerFor]="menu" ><i class="fa-solid fa-ellipsis"></i></button>
+
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item >تفاصيل</button>
+                  <button mat-menu-item >تعديل </button>
+                  <button  mat-menu-item (click)="deleteStudent(element.StudentID)" class="text-danger">حذف</button>
+                </mat-menu>
+            </div>
+
+
+          </td>
+          </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSizeOptions]="[10, 15, 25]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  </div>
+}
+ @else{
+  <app-nodata></app-nodata>
+}
+
+
+</div>
+
+
+<!--! ************************** Dailog ************************** -->
+
+
+<div class="modal fade modal-lg" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered ">
+
+  <div class="modal-content rounded-4 border ">
+
+    <div class="modal-header" >
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-title fs-2" id="exampleModalToggleLabel">اضافة طالب</div>
+    </div>
+
+
+    <div class="modal-body">
+
+      <form class="example-form" [formGroup]="form">
+        <div class="d-flex justify-content-between gap-4">
+
+         <p class="w-50 bg">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>الاسم الاول</mat-label>
+            <input matInput placeholder="" formControlName="FirstName">
+          </mat-form-field>
+        </p>
+
+
+        <p class="w-50 bg">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>اسم العائلة</mat-label>
+            <input matInput placeholder="" formControlName="LastName">
+          </mat-form-field>
+        </p>
+      </div>
+
+      <div class="d-flex justify-content-between gap-4">
+        <p class="w-50 bg">
+         <mat-form-field appearance="outline" class="w-100">
+           <mat-label>الرقم القومي او جواز السفر للطالب</mat-label>
+           <input matInput placeholder="" formControlName="StudentID">
+         </mat-form-field>
+       </p>
+       <p class="w-50 bg">
+         <mat-form-field appearance="outline" class="w-100">
+           <mat-label>الرقم القومي او جواز السفر ولي الامر</mat-label>
+           <input matInput placeholder="" formControlName="ParentID">
+         </mat-form-field>
+       </p>
+     </div>
+
+     <div class="d-flex justify-content-between gap-4">
+      <p class="w-50 bg">
+       <mat-form-field appearance="outline" class="w-100">
+         <mat-label>رقم هاتف ولي الامر</mat-label>
+         <input matInput placeholder="" formControlName="Phone">
+       </mat-form-field>
+     </p>
+     <p class="w-50 bg">
+       <mat-form-field appearance="outline" class="w-100">
+         <mat-label>العنوان</mat-label>
+         <input matInput placeholder="" formControlName="address">
+       </mat-form-field>
+     </p>
+   </div>
+
+
+   <div class="d-flex justify-content-between gap-4">
+
+    <div class="w-50 border rounded" style="height: 58px;">
+      <input type="date" class="w-100 h-100 p-4" formControlName="DateOfBirth">
+    </div>
+
+   <p class="w-50 bg">
+     <mat-form-field appearance="outline" class="w-100">
+       <mat-label>اضافي</mat-label>
+       <input matInput placeholder="" formControlName="more">
+     </mat-form-field>
+   </p>
+ </div>
+
+
+
+
+      <div class="selecttion d-flex justify-content-between gap-4 ">
+        <select class="form-select border border-1 border-dark" name="value" aria-label="Default select example" formControlName="Nationality">
+          <option selected disabled>الجنسية</option>
+          <option value="مصري">مصري</option>
+          <option value="سوداني">سوداني</option>
+          <option value="اخري">اخري</option>
+        </select>
+
+        <select class="form-select border border-1 border-dark" name="value" aria-label="Default select example" formControlName="Gender">
+          <option selected disabled>الجنس</option>
+          <option value="ولد">ولد</option>
+          <option value="بنت">بنت</option>
+        </select>
+
+      </div>
+      <div class="selecttion d-flex justify-content-between gap-4 my-4">
+        <select class="form-select border border-1 border-dark" name="value" aria-label="Default select example" formControlName="expensesStutus">
+          <option selected disabled>الرسوم</option>
+          <option value="payed">تم السداد</option>
+          <option value="notPayed">لم يتم السداد</option>
+        </select>
+
+        <select class="form-select border border-1 border-dark" name="value" aria-label="Default select example" formControlName="Class">
+          <option selected disabled>السنة الدراسية</option>
+          <option value="الصف الاول">الصف الاول</option>
+          <option value="الصف الثاني">الصف الثاني</option>
+          <option value="الصف الثالث">الصف الثالث</option>
+          <option value="الصف الرابع">الصف الرابع</option>
+          <option value="الصف الخامس">الصف الخامس</option>
+          <option value="الصف السادس">الصف السادس</option>
+        </select>
+
+      </div>
+
+
+      <div class="modal-footer">
+        <button class="btn btn-primary" (click)="addStudent()">اضافة</button>
+      </div>
+
+    </form>
+
+  </div>
+
+  </div>
+</div>
+</div>
+<!-- ********************************************* -->

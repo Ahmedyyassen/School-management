@@ -6,13 +6,13 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { loadingInterceptor } from './Shared/Services/interceptor/loading.interceptor';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes),
     provideHttpClient(withFetch(), withInterceptors([loadingInterceptor] )),
     importProvidersFrom([BrowserAnimationsModule]),
      provideAnimations(),
-    provideToastr(),
-
+    provideToastr(), provideAnimationsAsync(),
   ]
 };
